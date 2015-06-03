@@ -100,7 +100,25 @@ public class JsonTools {
 
     }
 
+    public static String parseIntArrayToString(int[] a, String delimiter) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(a[0]);
+        for (int i=1; i<a.length; i++)
+            sb.append(delimiter + a[i]);
+        return sb.toString();
+    }
+
+    public static int[] parseStringToIntArray(String str, String delimiter) {
+        String[] temp = str.split(delimiter);
+        int N = temp.length;
+        int[] a = new int[N];
+        for (int i=0; i<N; i++)
+            a[i] = Integer.parseInt(temp[i]);
+        return a;
+    }
+
     public static void main(String[] args) throws IOException {
+        /*
         String file = "/home/enali/design-data/10212-tweets.json";
         BufferedReader br = new BufferedReader(new FileReader(file));
         String jsonData = br.readLine();
@@ -113,5 +131,14 @@ public class JsonTools {
             System.out.println(temp);
         }
         br.close();
+        */
+        int[] a = {1, 2, 3, 4, 5};
+        String str = parseIntArrayToString(a, "===");
+        System.out.println(str);
+        int[] temp = parseStringToIntArray(str, "===");
+        for (int i=0; i<temp.length; i++)
+            System.out.printf("%d\t", temp[i]);
+        System.out.println();
+
     }
 }

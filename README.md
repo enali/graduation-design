@@ -19,3 +19,10 @@
 * `d`: 表示值为`double`
 * `i`: 表示值为`int`
 * `l`: 表示值为`long`
+
+# run
+
+* 启动HDFS和YARN: `start-dfs.sh && start-yarn.sh`
+* 创建用户目录: `hdfs dfs -mkdir -p /user/$USER`
+* 将数据文件夹拷贝到HDFS: `hdfs dfs -put data .`
+* 运行: `hadoop jar graduation-design-1.0-jar com.enalix.design.TweetRun [count|test|extract] data output`

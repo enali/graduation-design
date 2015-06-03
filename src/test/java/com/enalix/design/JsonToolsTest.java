@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -34,5 +35,19 @@ public class JsonToolsTest {
         assertThat(JsonTools.validateSelect(select), is(true));
         String select_wrong = "y$age";
         assertThat(JsonTools.validateSelect(select_wrong), is(false));
+    }
+
+    @Test
+    public void parseIntArrayToStringTest() {
+        int[] a = {1, 2, 3, 4, 5};
+        String str = JsonTools.parseIntArrayToString(a, "===");
+        assertThat(str, is("1===2===3===4===5"));
+    }
+
+    @Test
+    public void parseStringToIntArrayTest() {
+        String str = "1===2===3===4===5";
+        int[] temp = JsonTools.parseStringToIntArray(str, "===");
+        assertArrayEquals(temp, new int[] {1, 2, 3, 4, 5});
     }
 }
